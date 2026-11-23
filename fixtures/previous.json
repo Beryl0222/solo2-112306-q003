@@ -1,0 +1,69 @@
+{
+  "generation": "fixture-round-4",
+  "devices": [
+    {
+      "id": "jig-a",
+      "demand": 1.4,
+      "station": "north",
+      "return_cap": 0.6
+    },
+    {
+      "id": "jig-b",
+      "demand": 1.1,
+      "station": "south",
+      "return_cap": 0.8
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "patch-1",
+      "capacity": 1.2
+    },
+    {
+      "id": "patch-2",
+      "capacity": 0.9
+    }
+  ],
+  "edges": [
+    {
+      "device": "jig-a",
+      "surface": "patch-1",
+      "cost": 0.1,
+      "status": "valid"
+    },
+    {
+      "device": "jig-b",
+      "surface": "patch-1",
+      "cost": 0.2,
+      "status": "valid"
+    },
+    {
+      "device": "jig-b",
+      "surface": "patch-2",
+      "cost": 1.0,
+      "status": "valid"
+    }
+  ],
+  "manual_return_cost": {
+    "jig-a": 0.8,
+    "jig-b": 0.5
+  },
+  "capture": "capture-3-previous",
+  "shared_groups": [
+    {
+      "id": "carry",
+      "cap": 0.95,
+      "edges": [
+        [
+          "jig-a",
+          "patch-1"
+        ],
+        [
+          "jig-b",
+          "patch-1"
+        ]
+      ]
+    }
+  ],
+  "temperature": 0.08
+}

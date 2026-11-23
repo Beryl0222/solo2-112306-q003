@@ -71,5 +71,6 @@
       ]
     }
   ],
-  "temperature": 0.08
+  "temperature": 0.08,
+  "previous_generation": "fixture-round-4"
 }

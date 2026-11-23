@@ -19,7 +19,7 @@ class FixtureContractTests(unittest.TestCase):
         primary = read_fixture("primary.json")
         revision = read_fixture("revision.json")
         self.assertEqual(manifest["fixture"], "grasp_transport")
-        self.assertEqual(manifest["records"], ["primary.json", "revision.json"])
+        self.assertEqual(manifest["records"], ["previous.json", "primary.json", "revision.json"])
         self.assertTrue(manifest["synthetic"])
         self.assertEqual(revision["replaces"], primary["capture"])
         self.assertNotEqual(revision["capture"], primary["capture"])
@@ -39,3 +39,13 @@ class FixtureContractTests(unittest.TestCase):
         for device, surface, value in revision["training_read"]["edge_upstream"]:
             self.assertIn((device, surface), edge_ids)
             self.assertTrue(np.isfinite(value))
+
+    def test_previous_generation_is_complete(self):
+        previous = read_fixture("previous.json")
+        primary = read_fixture("primary.json")
+        self.assertEqual(primary["previous_generation"], previous["generation"])
+        self.assertNotEqual(primary["capture"], previous["capture"])
+        self.assertEqual(previous["devices"], primary["devices"])
+        self.assertEqual(previous["surfaces"], primary["surfaces"])
+        self.assertTrue(all(edge["status"] == "valid" for edge in previous["edges"]))
+        self.assertTrue(any(edge["status"] == "pending_rephoto" for edge in primary["edges"]))

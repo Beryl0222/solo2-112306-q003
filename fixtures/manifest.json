@@ -3,6 +3,7 @@
   "fixture": "grasp_transport",
   "synthetic": true,
   "records": [
+    "previous.json",
     "primary.json",
     "revision.json"
   ]
