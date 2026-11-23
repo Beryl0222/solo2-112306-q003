@@ -1,49 +1,52 @@
 {
-  "generation": "fixture-round-5",
-  "devices": [
+  "capture": "capture-3-b",
+  "events": [
     {
-      "id": "jig-a",
-      "demand": 1.4
+      "event_id": "retake-1",
+      "edges": [
+        {
+          "device": "jig-a",
+          "surface": "patch-2",
+          "cost": -0.3,
+          "status": "valid"
+        }
+      ]
     },
     {
-      "id": "jig-b",
-      "demand": 1.1
+      "event_id": "retake-2",
+      "groups": [
+        {
+          "id": "carry",
+          "cap": 0.14
+        }
+      ]
+    },
+    {
+      "event_id": "retake-3",
+      "groups": [
+        {
+          "id": "carry",
+          "cap": 0.74
+        }
+      ],
+      "inactive_devices": [
+        "jig-b"
+      ]
     }
   ],
-  "surfaces": [
-    {
-      "id": "patch-1",
-      "capacity": 1.2
-    },
-    {
-      "id": "patch-2",
-      "capacity": 0.9
-    }
-  ],
-  "edges": [
-    {
-      "device": "jig-a",
-      "surface": "patch-1",
-      "cost": 0.1,
-      "status": "valid"
-    },
-    {
-      "device": "jig-a",
-      "surface": "patch-2",
-      "cost": 0.4,
-      "status": "pending_rephoto"
-    },
-    {
-      "device": "jig-b",
-      "surface": "patch-1",
-      "cost": 0.2,
-      "status": "valid"
-    }
-  ],
-  "manual_return_cost": {
-    "jig-a": 0.8,
-    "jig-b": 0.5
+  "training_read": {
+    "edge_upstream": [
+      [
+        "jig-a",
+        "patch-1",
+        0.4
+      ],
+      [
+        "jig-b",
+        "patch-2",
+        -0.6
+      ]
+    ]
   },
-  "revision": "synthetic-revision-2",
-  "note": "用于说明资料发生修订，不包含预设的业务计算结论。"
+  "replaces": "capture-3-a"
 }
