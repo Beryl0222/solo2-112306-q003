@@ -1,0 +1,9 @@
+{
+  "format": 1,
+  "fixture": "grasp_transport",
+  "synthetic": true,
+  "records": [
+    "primary.json",
+    "revision.json"
+  ]
+}
